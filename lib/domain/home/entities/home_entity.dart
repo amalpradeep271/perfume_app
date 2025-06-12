@@ -1,27 +1,22 @@
-class HomeEntity {
-  final int errorCode;
-  final String message;
-  final HomeDataEntity data;
+import 'package:perfume_app/common/enums.dart';
 
-  HomeEntity({
-    required this.errorCode,
-    required this.message,
-    required this.data,
-  });
+class HomeEntity {
+  final int? errorCode;
+  final String? message;
+  final HomeDataEntity? data;
+
+  HomeEntity({this.errorCode, this.message, this.data});
 }
 
 class HomeDataEntity {
-  final List<HomeFieldEntity> homeFields;
-  final int notificationCount;
+  final List<HomeFieldEntity>? homeFields;
+  final int? notificationCount;
 
-  HomeDataEntity({
-    required this.homeFields,
-    required this.notificationCount,
-  });
+  HomeDataEntity({this.homeFields, this.notificationCount});
 }
 
 class HomeFieldEntity {
-  final String type;
+  final String? type;
   final List<BannerEntity>? carouselItems;
   final List<BrandEntity>? brands;
   final List<BrandEntity>? categories;
@@ -33,7 +28,7 @@ class HomeFieldEntity {
   final BannerEntity? banner;
 
   HomeFieldEntity({
-    required this.type,
+    this.type,
     this.carouselItems,
     this.brands,
     this.categories,
@@ -47,63 +42,51 @@ class HomeFieldEntity {
 }
 
 class BannerEntity {
-  final int id;
-  final String image;
-  final String type;
+  final int? id;
+  final String? image;
+  final String? type;
 
-  BannerEntity({
-    required this.id,
-    required this.image,
-    required this.type,
-  });
+  BannerEntity({this.id, this.image, this.type});
 }
 
 class BrandEntity {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
   final String? image;
 
-  BrandEntity({
-    required this.id,
-    required this.name,
-    this.image,
-  });
+  BrandEntity({this.id, this.name, this.image});
 }
 
 class ProductEntity {
-  final int id;
-  final String image;
-  final String name;
-  final Currency currency;
-  final Unit unit;
-  final bool wishlisted;
-  final bool rfqStatus;
-  final int cartCount;
-  final int futureCartCount;
-  final bool hasStock;
-  final String price;
-  final String actualPrice;
-  final String offer;
-  final List<dynamic> offerPrices;
+  final int? id;
+  final String? image;
+  final String? name;
+  final Currency? currency;
+  final Unit? unit;
+  final bool? wishlisted;
+  final bool? rfqStatus;
+  final int? cartCount;
+  final int? futureCartCount;
+  final bool? hasStock;
+  final String? price;
+  final String? actualPrice;
+  final String? offer;
+  final List<dynamic>? offerPrices;
 
   ProductEntity({
-    required this.id,
-    required this.image,
-    required this.name,
-    required this.currency,
-    required this.unit,
-    required this.wishlisted,
-    required this.rfqStatus,
-    required this.cartCount,
-    required this.futureCartCount,
-    required this.hasStock,
-    required this.price,
-    required this.actualPrice,
-    required this.offer,
-    required this.offerPrices,
+    this.id,
+    this.image,
+    this.name,
+    this.currency,
+    this.unit,
+    this.wishlisted,
+    this.rfqStatus,
+    this.cartCount,
+    this.futureCartCount,
+    this.hasStock,
+    this.price,
+    this.actualPrice,
+    this.offer,
+    this.offerPrices,
   });
 }
-
-enum Currency { aed }
-
-enum Unit { perCarton }

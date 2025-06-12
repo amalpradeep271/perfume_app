@@ -4,56 +4,58 @@
 
 import 'dart:convert';
 
+import 'package:perfume_app/common/enums.dart';
+
 HomeModel homeModelFromJson(String str) => HomeModel.fromJson(json.decode(str));
 
 String homeModelToJson(HomeModel data) => json.encode(data.toJson());
 
 class HomeModel {
-    int errorCode;
-    String message;
-    Data data;
+    int? errorCode;
+    String? message;
+    Data? data;
 
     HomeModel({
-        required this.errorCode,
-        required this.message,
-        required this.data,
+        this.errorCode,
+        this.message,
+        this.data,
     });
 
     factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
         errorCode: json["error_code"],
         message: json["message"],
-        data: Data.fromJson(json["data"]),
+        data: json["data"] == null ? null : Data.fromJson(json["data"]),
     );
 
     Map<String, dynamic> toJson() => {
         "error_code": errorCode,
         "message": message,
-        "data": data.toJson(),
+        "data": data?.toJson(),
     };
 }
 
 class Data {
-    List<HomeField> homeFields;
-    int notificationCount;
+    List<HomeField>? homeFields;
+    int? notificationCount;
 
     Data({
-        required this.homeFields,
-        required this.notificationCount,
+        this.homeFields,
+        this.notificationCount,
     });
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(
-        homeFields: List<HomeField>.from(json["home_fields"].map((x) => HomeField.fromJson(x))),
+        homeFields: json["home_fields"] == null ? [] : List<HomeField>.from(json["home_fields"]!.map((x) => HomeField.fromJson(x))),
         notificationCount: json["notification_count"],
     );
 
     Map<String, dynamic> toJson() => {
-        "home_fields": List<dynamic>.from(homeFields.map((x) => x.toJson())),
+        "home_fields": homeFields == null ? [] : List<dynamic>.from(homeFields!.map((x) => x.toJson())),
         "notification_count": notificationCount,
     };
 }
 
 class HomeField {
-    String type;
+    String? type;
     List<Banner>? carouselItems;
     List<Brand>? brands;
     List<Brand>? categories;
@@ -65,7 +67,7 @@ class HomeField {
     Banner? banner;
 
     HomeField({
-        required this.type,
+        this.type,
         this.carouselItems,
         this.brands,
         this.categories,
@@ -105,14 +107,14 @@ class HomeField {
 }
 
 class Banner {
-    int id;
-    String image;
-    String type;
+    int? id;
+    String? image;
+    String? type;
 
     Banner({
-        required this.id,
-        required this.image,
-        required this.type,
+        this.id,
+        this.image,
+        this.type,
     });
 
     factory Banner.fromJson(Map<String, dynamic> json) => Banner(
@@ -129,14 +131,14 @@ class Banner {
 }
 
 class Brand {
-    int id;
-    String name;
+    int? id;
+    String? name;
     String? image;
 
     Brand({
-        required this.id,
-        required this.name,
-        required this.image,
+        this.id,
+        this.name,
+        this.image,
     });
 
     factory Brand.fromJson(Map<String, dynamic> json) => Brand(
@@ -153,36 +155,36 @@ class Brand {
 }
 
 class Product {
-    int id;
-    String image;
-    String name;
-    Currency currency;
-    Unit unit;
-    bool wishlisted;
-    bool rfqStatus;
-    int cartCount;
-    int futureCartCount;
-    bool hasStock;
-    String price;
-    String actualPrice;
-    String offer;
-    List<dynamic> offerPrices;
+    int? id;
+    String? image;
+    String? name;
+    Currency? currency;
+    Unit? unit;
+    bool? wishlisted;
+    bool? rfqStatus;
+    int? cartCount;
+    int? futureCartCount;
+    bool? hasStock;
+    String? price;
+    String? actualPrice;
+    String? offer;
+    List<dynamic>? offerPrices;
 
     Product({
-        required this.id,
-        required this.image,
-        required this.name,
-        required this.currency,
-        required this.unit,
-        required this.wishlisted,
-        required this.rfqStatus,
-        required this.cartCount,
-        required this.futureCartCount,
-        required this.hasStock,
-        required this.price,
-        required this.actualPrice,
-        required this.offer,
-        required this.offerPrices,
+        this.id,
+        this.image,
+        this.name,
+        this.currency,
+        this.unit,
+        this.wishlisted,
+        this.rfqStatus,
+        this.cartCount,
+        this.futureCartCount,
+        this.hasStock,
+        this.price,
+        this.actualPrice,
+        this.offer,
+        this.offerPrices,
     });
 
     factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -199,7 +201,7 @@ class Product {
         price: json["price"],
         actualPrice: json["actual_price"],
         offer: json["offer"],
-        offerPrices: List<dynamic>.from(json["offer_prices"].map((x) => x)),
+        offerPrices: json["offer_prices"] == null ? [] : List<dynamic>.from(json["offer_prices"]!.map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
@@ -216,25 +218,10 @@ class Product {
         "price": price,
         "actual_price": actualPrice,
         "offer": offer,
-        "offer_prices": List<dynamic>.from(offerPrices.map((x) => x)),
+        "offer_prices": offerPrices == null ? [] : List<dynamic>.from(offerPrices!.map((x) => x)),
     };
 }
 
-enum Currency {
-    aed
-}
-
-final currencyValues = EnumValues({
-    "AED": Currency.aed
-});
-
-enum Unit {
-    percarton
-}
-
-final unitValues = EnumValues({
-    "per Carton": Unit.percarton
-});
 
 class EnumValues<T> {
     Map<String, T> map;
@@ -247,7 +234,3 @@ class EnumValues<T> {
             return reverseMap;
     }
 }
-
-enum CurrencyModel { aed }
-
-enum UnitModel { perCarton }

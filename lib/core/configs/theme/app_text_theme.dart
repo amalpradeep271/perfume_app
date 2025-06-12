@@ -103,49 +103,35 @@ extension AppFontSize on TextStyle {
 }
 
 extension AppFontColor on TextStyle {
-  // color:AppColors.grey
   TextStyle get greycolor => copyWith(color: AppColors.grey);
 
-  /// color: AppColors.white,
   TextStyle get whiteColor => copyWith(color: AppColors.white);
 
-  /// color: AppColors.black,
   TextStyle get blackColor => copyWith(color: AppColors.black);
 
-  // /// color: AppColors.kPrimaryColor,
-  // TextStyle get kPrimaryColor => copyWith(color: AppColors.kPrimaryColor);
+  TextStyle get greenColor => copyWith(color: AppColors.green);
 
-  // /// color: AppColors.neutral3,
-  // TextStyle get neutral3Color => copyWith(color: AppColors.neutral3);
 
-  /// color: AppColors.neutral3,
   TextStyle get redColor => copyWith(color: AppColors.red);
 
-  /// color: AppColors.lightgray,
   TextStyle get lightgrayColor =>
       copyWith(color: const Color.fromARGB(193, 170, 170, 170));
 
-  /// color: AppColors.gray,
   TextStyle get grayColor =>
       copyWith(color: const Color.fromARGB(255, 146, 144, 144));
 }
 
 extension AppFontStyle on TextStyle {
-  /// color: AppColors.white,
   TextStyle get italic => copyWith(fontStyle: FontStyle.italic);
 }
 
 extension AppFontDecoration on TextStyle {
-  /// decoration: TextDecoration.overline,
   TextStyle get overline => copyWith(decoration: TextDecoration.overline);
 
-  /// decoration: TextDecoration.underline,
   TextStyle get underline => copyWith(decoration: TextDecoration.underline);
 
-  /// decoration: TextDecoration.overline,
   TextStyle get noneDecoration => copyWith(decoration: TextDecoration.none);
 
-  /// decoration: TextDecoration.lineThrough,
   TextStyle get lineThrough => copyWith(decoration: TextDecoration.lineThrough);
 }
 
